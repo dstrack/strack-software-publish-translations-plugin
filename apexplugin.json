@@ -1,0 +1,33 @@
+{
+  "name": "Automatic Publish Translations",
+  "version": "1.0.3",
+  "description": "Process plugin for automatic publishing of translated APEX Apps",
+  "keywords": ["translation", "seed", "publish", "international", "language"],
+  "homepage": "https://github.com/dstrack/strack-software-publish-translations-plugin",
+  "bugs": {
+    "url": "https://github.com/dstrack/strack-software-publish-translations-plugin/issues",
+    "email": "strack.software@t-online.de"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Dirk Strack",
+    "email": "strack.software@t-online.de",
+    "url": "https://strack-software-development.blogspot.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dstrack/strack-software-publish-translations-plugin.git"
+  },
+  "oracle": {
+    "versions": ["12.2.0.1", "20.1"],
+    "apex": {
+      "versions": ["5.1.0", "22.1"],
+      "plugin": {
+        "internalName": "COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS",
+        "type": "process",
+        "demo": "https://apex.oracle.com/pls/apex/f?p=39653:LOGIN_DESKTOP",
+        "previewImage": "https://raw.githubusercontent.com/dstrack/strack-software-publish-translations-plugin/main/Publish-Translations-Process.png"
+      }
+    }
+  }
+}
