@@ -1,5 +1,5 @@
-{
-  "name": "Automatic Publish Translations",
+d {
+  "name": "Seed and Publish Translations",
   "version": "1.0.3",
   "description": "Process plugin for automatic publishing of translated APEX Apps",
   "keywords": ["translation", "seed", "publish", "international", "language"],
@@ -25,7 +25,7 @@
       "plugin": {
         "internalName": "COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS",
         "type": "process",
-        "demo": "https://apex.oracle.com/pls/apex/f?p=39653:LOGIN_DESKTOP",
+        "demo": "",
         "previewImage": "https://raw.githubusercontent.com/dstrack/strack-software-publish-translations-plugin/main/Publish-Translations-Process.png"
       }
     }
