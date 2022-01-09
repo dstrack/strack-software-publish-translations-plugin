@@ -23,4 +23,4 @@ import the file process_type_plugin_com_strack_software_publish_translations.sql
 ## Implementation
 On the home page of your application add a process on page load.
 
-![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/images/Publish-Translations-Process.png)
+![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Publish-Translations-Process.png)
