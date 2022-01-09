@@ -21,6 +21,16 @@ For example: When your application's primary language is English and you inspect
 import the file process_type_plugin_com_strack_software_publish_translations.sql in the Supporting Objects / Plug-Ins page.
 
 ## Implementation
-On the home page of your application add a process on page load.
+- Go to the home page of your application.
+- Open the Pre-Rendering section and add a Process
+  - Name: Publish Translations
+  - Type: Seed and Publish Translations (Plug-In)
+  - Settings
+    - Execute Asynchronous: Yes/No (When this option is set to Yes, then the seed and publish of the translated apps is executed asynchronous by an scheduler job. Otherwise, the application user has to wait until the seed and publish process is completed.) 
+    - Seed Translations: Yes/No (Seeding the translation copies all translatable text into the translation text repository. When this option is set to Yes, then seeding of the translated text is executed. Otherwise, the seeding of translatable text is skipped.)
+  - Execution Options
+    - Point: After Header
+  - Success Message: Started publishing of translations. 
+
 
 ![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Publish-Translations-Process.png)
