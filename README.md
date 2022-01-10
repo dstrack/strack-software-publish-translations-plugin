@@ -41,5 +41,5 @@ You can check the process execution with the following queries:
 - SELECT * FROM USER_SCHEDULER_JOB_RUN_DETAILS WHERE JOB_NAME LIKE 'PUBLISH_TRANSLATIONS%' ORDER BY LOG_DATE DESC;
 
 After execution of the process the translated apps are up-to-date.
-On the page Shared Components \ Translate - the List of Translations  the column Requires-Synchronization will display _No_ in every row.
+On the page Shared Components \ Translate - in the List of Translations the column Requires-Synchronization will display _No_ in every row.
 ![Translations-Requires-Synchronization](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Translations-Requires-Synchronization.png)
