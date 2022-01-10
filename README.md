@@ -21,6 +21,7 @@ For example: When your application's primary language is English and you inspect
 import the file process_type_plugin_com_strack_software_publish_translations.sql in the Supporting Objects / Plug-Ins page.
 
 ## Implementation
+This example implements a process that is runs when you load the home page after a change in your application.
 - Go to the home page of your application.
 - Open the Pre-Rendering section and add a Process
   - Name: Publish Translations
@@ -34,3 +35,11 @@ import the file process_type_plugin_com_strack_software_publish_translations.sql
 
 
 ![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Publish-Translations-Process.png)
+
+You can check the process execution with the following queries:
+- SELECT * FROM USER_SCHEDULER_RUNNING_JOBS WHERE JOB_NAME LIKE 'PUBLISH_TRANSLATIONS%';
+- SELECT * FROM USER_SCHEDULER_JOB_RUN_DETAILS WHERE JOB_NAME LIKE 'PUBLISH_TRANSLATIONS%' ORDER BY LOG_DATE DESC;
+
+After execution of the process the translated apps are up-to-date.
+On the page Shared Components \ Translate - the List of Translations  the column Requires-Synchronization will display _No_ in every row.
+![Translations-Requires-Synchronization](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Translations-Requires-Synchronization.png)
