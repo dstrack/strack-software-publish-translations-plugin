@@ -5,7 +5,7 @@ A required task for APEX developers is: When any modification is made to your pr
 
 ## The Plug-In solves the following problems:
 1. When you develop multilingual APEX applications, you have to repeat the "Seed" and "Publish" operations as often as you make any changes.
-For example: When your application's primary language is English and you inspect the german version of your app you may find issues with truncated labels because of the space for much longer item labels. When you change the "Column Span" of an item you have to repeat the seed & publish operations to see the result of your change in the german app.
+For example: When your application's primary language is English and you inspect the german version of your app you may find issues with truncated labels because of the space for much longer item labels. When you change the "Column Span" of an item you have to repeat the publish translations operation to see the result of your change in the german app.
 2. When you install multilingual APEX applications on a different website via the import application process, you have to manually perform the publish operation to see the translated version of your app.
 3. You have to wait many seconds until the  "Seed" and "Publish" operations are completed before you can continue with your work.
 
