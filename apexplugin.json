@@ -25,7 +25,7 @@ d {
       "plugin": {
         "internalName": "COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS",
         "type": "process",
-        "demo": "",
+        "demo": "https://apex.oracle.com/pls/apex/f?p=50086:1",
         "previewImage": "https://raw.githubusercontent.com/dstrack/strack-software-publish-translations-plugin/main/media/Publish-Translations-Process.png"
       }
     }
