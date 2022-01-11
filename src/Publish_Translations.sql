@@ -1,10 +1,12 @@
 FUNCTION Publish_Translations (
     p_Application_ID NUMBER,
-    p_Exec_Asynchronous VARCHAR2 DEFAULT 'N',
-    p_Seed_Translations VARCHAR2 DEFAULT 'N'
+    p_Exec_Asynchronous VARCHAR2 DEFAULT 'Y',
+    p_Seed_Translations VARCHAR2 DEFAULT 'Y'
 )
 RETURN BOOLEAN
 IS
+	job_exist EXCEPTION;
+	PRAGMA EXCEPTION_INIT (job_exist, -27477); -- ORA-27477: job already exists
     v_Owner APEX_APPLICATIONS.OWNER%TYPE;
     v_Pref_Name VARCHAR2(64) := 'PUBLISH_TRANSLATIONS'||p_Application_ID;
     v_Last_Updated VARCHAR2(64);
@@ -22,6 +24,7 @@ BEGIN
         p_value => v_Last_Updated,
         p_user => v_Owner
     );
+    commit;
     v_sql := apex_string.format(p_message => 
         'begin 
         !   apex_session.attach (%s, %s, %s);
@@ -59,6 +62,8 @@ BEGIN
         EXECUTE IMMEDIATE v_sql;
     end if;
     return false;
+EXCEPTION WHEN job_exist THEN
+	return true;
 END Publish_Translations;
 
 FUNCTION plugin_publish_translations (

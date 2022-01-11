@@ -1,6 +1,6 @@
 d {
   "name": "Seed and Publish Translations",
-  "version": "1.0.3",
+  "version": "2.0.1",
   "description": "Process plugin for automatic publishing of translated APEX Apps",
   "keywords": ["translation", "seed", "publish", "international", "language"],
   "homepage": "https://github.com/dstrack/strack-software-publish-translations-plugin",

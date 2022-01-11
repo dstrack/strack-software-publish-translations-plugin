@@ -16,107 +16,111 @@ wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2019.03.31'
 ,p_release=>'19.1.0.00.15'
 ,p_default_workspace_id=>1293931922049787
-,p_default_application_id=>530
-,p_default_owner=>'HR_DATA'
+,p_default_application_id=>108
+,p_default_owner=>'STRACK_DEV'
 );
 end;
 /
 prompt --application/shared_components/plugins/process_type/com_strack_software_publish_translations
 begin
 wwv_flow_api.create_plugin(
- p_id=>wwv_flow_api.id(545080404462086996)
+ p_id=>wwv_flow_api.id(817830890893336168)
 ,p_plugin_type=>'PROCESS TYPE'
 ,p_name=>'COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS'
 ,p_display_name=>'Seed and Publish Translations'
 ,p_supported_ui_types=>'DESKTOP:JQM_SMARTPHONE'
 ,p_plsql_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'FUNCTION Publish_Translations (',
-'	p_Application_ID NUMBER,',
-'	p_Exec_Asynchronous VARCHAR2 DEFAULT ''Y'',',
-'	p_Seed_Translations VARCHAR2 DEFAULT ''Y''',
+'    p_Application_ID NUMBER,',
+'    p_Exec_Asynchronous VARCHAR2 DEFAULT ''Y'',',
+'    p_Seed_Translations VARCHAR2 DEFAULT ''Y''',
 ')',
 'RETURN BOOLEAN',
 'IS',
-'	v_Owner APEX_APPLICATIONS.OWNER%TYPE;',
-'	v_Pref_Name VARCHAR2(64) := ''PUBLISH_TRANSLATIONS''||p_Application_ID;',
-'	v_Last_Updated VARCHAR2(64);',
-'	v_sql USER_SCHEDULER_JOBS.JOB_ACTION%TYPE;',
+'	job_exist EXCEPTION;',
+'	PRAGMA EXCEPTION_INIT (job_exist, -27477); -- ORA-27477: job already exists',
+'    v_Owner APEX_APPLICATIONS.OWNER%TYPE;',
+'    v_Pref_Name VARCHAR2(64) := ''PUBLISH_TRANSLATIONS''||p_Application_ID;',
+'    v_Last_Updated VARCHAR2(64);',
+'    v_sql USER_SCHEDULER_JOBS.JOB_ACTION%TYPE;',
 'BEGIN ',
-'	select OWNER, TO_CHAR(LAST_UPDATED_ON, ''YYYY/MM/DD HH24:MI:SS'')',
-'	into v_Owner, v_Last_Updated',
-'	from APEX_APPLICATIONS',
-'	where APPLICATION_ID = p_Application_ID;',
-'	if v_Last_Updated = apex_util.get_preference(v_Pref_Name, v_Owner) then ',
-'		return true;',
-'	end if;',
-'	apex_util.set_preference(',
-'		p_preference => v_Pref_Name, ',
-'		p_value => v_Last_Updated,',
-'		p_user => v_Owner',
-'	);',
-'	v_sql := apex_string.format(p_message => ',
-'		''begin ',
-'		!	apex_session.attach (%s, %s, %s);',
-'		!	for cur in (',
-'		!		select PRIMARY_APPLICATION_ID app_id, TRANSLATED_APP_LANGUAGE lang',
-'		!		from APEX_APPLICATION_TRANS_MAP',
-'		!		where PRIMARY_APPLICATION_ID = %s',
-'		!	) loop',
-'		!       %s',
-'		!		apex_lang.publish_application(cur.app_id, cur.lang);',
-'		!	end loop;',
-'		!	apex_session.detach;',
-'		!end;'', ',
-'		p0 => p_Application_ID, ',
-'		p1 => V(''APP_PAGE_ID''),',
-'		p2 => V(''APP_SESSION''),',
-'		p3 => p_Application_ID, ',
-'		p4 => case when p_seed_translations = ''Y'' then ',
-'			''apex_lang.seed_translations(cur.app_id, cur.lang);''',
-'		end,',
-'		p_prefix => ''!''',
-'	);',
-'	if apex_application.g_debug then',
-'		apex_debug.message(''exec_async: %s'', p_exec_asynchronous);',
-'		apex_debug.message(''job_action: %s'', v_sql);',
-'	end if;',
-'	if p_exec_asynchronous = ''Y'' then ',
-'		dbms_scheduler.create_job(',
-'			job_name => v_Pref_Name,',
-'			start_date => SYSDATE,',
-'			job_type => ''PLSQL_BLOCK'',',
-'			job_action => v_sql,',
-'			enabled => true ',
-'		);',
-'	else ',
-'		EXECUTE IMMEDIATE v_sql;',
-'	end if;',
-'	return false;',
+'    select OWNER, TO_CHAR(LAST_UPDATED_ON, ''YYYY/MM/DD HH24:MI:SS'')',
+'    into v_Owner, v_Last_Updated',
+'    from APEX_APPLICATIONS',
+'    where APPLICATION_ID = p_Application_ID;',
+'    if v_Last_Updated = apex_util.get_preference(v_Pref_Name, v_Owner) then ',
+'        return true;',
+'    end if;',
+'    apex_util.set_preference(',
+'        p_preference => v_Pref_Name, ',
+'        p_value => v_Last_Updated,',
+'        p_user => v_Owner',
+'    );',
+'    commit;',
+'    v_sql := apex_string.format(p_message => ',
+'        ''begin ',
+'        !   apex_session.attach (%s, %s, %s);',
+'        !   for cur in (',
+'        !       select PRIMARY_APPLICATION_ID app_id, TRANSLATED_APP_LANGUAGE lang',
+'        !       from APEX_APPLICATION_TRANS_MAP',
+'        !       where PRIMARY_APPLICATION_ID = %s',
+'        !   ) loop',
+'        !      %s apex_lang.seed_translations(cur.app_id, cur.lang);',
+'        !       apex_lang.publish_application(cur.app_id, cur.lang);',
+'        !   end loop;',
+'        !   apex_session.detach;',
+'        !end;'', ',
+'        p0 => p_Application_ID, ',
+'        p1 => V(''APP_PAGE_ID''),',
+'        p2 => V(''APP_SESSION''),',
+'        p3 => p_Application_ID, ',
+'        p4 => case when p_seed_translations = ''N'' then ''-- '' end,',
+'        p_prefix => ''!''',
+'    );',
+'    if apex_application.g_debug then',
+'        apex_debug.message(''exec_asynchronous: %s'', p_exec_asynchronous);',
+'        apex_debug.message(''seed_translations: %s'', p_seed_translations);',
+'        apex_debug.message(''job_action: %s'', v_sql);',
+'    end if;',
+'    if p_exec_asynchronous = ''Y'' then ',
+'        dbms_scheduler.create_job(',
+'            job_name => v_Pref_Name,',
+'            start_date => SYSDATE,',
+'            job_type => ''PLSQL_BLOCK'',',
+'            job_action => v_sql,',
+'            enabled => true ',
+'        );',
+'    else ',
+'        EXECUTE IMMEDIATE v_sql;',
+'    end if;',
+'    return false;',
+'EXCEPTION WHEN job_exist THEN',
+'	return true;',
 'END Publish_Translations;',
 '',
 'FUNCTION plugin_publish_translations (',
-'	p_process in apex_plugin.t_process,',
-'	p_plugin  in apex_plugin.t_plugin )',
+'    p_process in apex_plugin.t_process,',
+'    p_plugin  in apex_plugin.t_plugin )',
 'RETURN apex_plugin.t_process_exec_result',
 'IS',
-'	v_exec_result apex_plugin.t_process_exec_result;',
-'	v_exec_asynchronous VARCHAR2(30);',
-'	v_seed_translations VARCHAR2(30);',
+'    v_exec_result apex_plugin.t_process_exec_result;',
+'    v_exec_asynchronous VARCHAR2(30);',
+'    v_seed_translations VARCHAR2(30);',
 'BEGIN',
-'	if apex_application.g_debug then',
-'		apex_plugin_util.debug_process (',
-'			p_plugin => p_plugin,',
-'			p_process => p_process',
-'		);',
-'	end if;',
-'	v_exec_asynchronous := p_process.attribute_01;',
-'	v_seed_translations  := p_process.attribute_02;',
-'	v_exec_result.execution_skipped := Publish_Translations(',
-'		p_Application_ID => apex_application.g_flow_id, ',
-'		p_Exec_Asynchronous => v_exec_asynchronous,',
-'		p_Seed_Translations => v_seed_translations',
-'	);',
-'	RETURN v_exec_result;',
+'    if apex_application.g_debug then',
+'        apex_plugin_util.debug_process (',
+'            p_plugin => p_plugin,',
+'            p_process => p_process',
+'        );',
+'    end if;',
+'    v_exec_asynchronous := p_process.attribute_01;',
+'    v_seed_translations  := p_process.attribute_02;',
+'    v_exec_result.execution_skipped := Publish_Translations(',
+'        p_Application_ID => apex_application.g_flow_id, ',
+'        p_Exec_Asynchronous => v_exec_asynchronous,',
+'        p_Seed_Translations => v_seed_translations',
+'    );',
+'    RETURN v_exec_result;',
 'END plugin_publish_translations;',
 ''))
 ,p_api_version=>2
@@ -128,8 +132,8 @@ wwv_flow_api.create_plugin(
 ,p_about_url=>'https://github.com/dstrack/strack-software-publish-translations-plugin.git'
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(545080605220094927)
-,p_plugin_id=>wwv_flow_api.id(545080404462086996)
+ p_id=>wwv_flow_api.id(817831091651344099)
+,p_plugin_id=>wwv_flow_api.id(817830890893336168)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
@@ -143,8 +147,8 @@ wwv_flow_api.create_plugin_attribute(
 'Otherwise, the application user has to wait until the seed and publish process is completed.'))
 );
 wwv_flow_api.create_plugin_attribute(
- p_id=>wwv_flow_api.id(545120887193060741)
-,p_plugin_id=>wwv_flow_api.id(545080404462086996)
+ p_id=>wwv_flow_api.id(817871373624309913)
+,p_plugin_id=>wwv_flow_api.id(817830890893336168)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20

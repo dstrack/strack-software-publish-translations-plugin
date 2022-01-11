@@ -22,12 +22,12 @@ wwv_flow_api.import_begin (
 end;
 /
  
-prompt APPLICATION 108 - Publish Translations Plug-In Demo
+prompt APPLICATION 108 - Seed & Publish Translations Plug-In Demo
 --
 -- Application Export:
 --   Application:     108
---   Name:            Publish Translations Plug-In Demo
---   Date and Time:   01:35 Tuesday January 11, 2022
+--   Name:            Seed & Publish Translations Plug-In Demo
+--   Date and Time:   02:32 Tuesday January 11, 2022
 --   Exported By:     DIRK
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -80,7 +80,7 @@ begin
 wwv_flow_api.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'STRACK_DEV')
-,p_name=>nvl(wwv_flow_application_install.get_application_name,'Publish Translations Plug-In Demo')
+,p_name=>nvl(wwv_flow_application_install.get_application_name,'Seed & Publish Translations Plug-In Demo')
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'108')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
@@ -100,7 +100,7 @@ wwv_flow_api.create_flow(
 ,p_app_builder_icon_name=>'app-icon.svg'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'Release 1.0'
+,p_flow_version=>'Release 2.0.1'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -110,9 +110,9 @@ wwv_flow_api.create_flow(
 ,p_csv_encoding=>'Y'
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
-,p_substitution_value_01=>'Publish Translations Plug-In Demo'
+,p_substitution_value_01=>'Seed & Publish Translations Plug-In Demo'
 ,p_last_updated_by=>'DIRK'
-,p_last_upd_yyyymmddhh24miss=>'20220111013034'
+,p_last_upd_yyyymmddhh24miss=>'20220111023243'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10040,8 +10040,8 @@ wwv_flow_api.create_translation(
 ,p_translate_to_lang_code=>'de'
 ,p_translation_specific_to_item=>'NO'
 ,p_template_translatable=>'N'
-,p_translate_to_text=>'Publish Translations Plug-In Demo'
-,p_translate_from_text=>'Publish Translations Plug-In Demo'
+,p_translate_to_text=>'Seed & Publish Translations Plug-In Demo'
+,p_translate_from_text=>'Seed & Publish Translations Plug-In Demo'
 );
 wwv_flow_api.create_translation(
  p_id=>wwv_flow_api.id(272756324430482580)
@@ -10053,8 +10053,8 @@ wwv_flow_api.create_translation(
 ,p_translate_to_lang_code=>'de'
 ,p_translation_specific_to_item=>'NO'
 ,p_template_translatable=>'N'
-,p_translate_to_text=>'Publish Translations Plug-In Demo - Sign In'
-,p_translate_from_text=>'Publish Translations Plug-In Demo - Sign In'
+,p_translate_to_text=>'Seed & Publish Translations Plug-In Demo - Sign In'
+,p_translate_from_text=>'Seed & Publish Translations Plug-In Demo - Sign In'
 );
 wwv_flow_api.create_translation(
  p_id=>wwv_flow_api.id(272756428954482580)
@@ -10144,8 +10144,8 @@ wwv_flow_api.create_translation(
 ,p_translate_to_lang_code=>'de'
 ,p_translation_specific_to_item=>'NO'
 ,p_template_translatable=>'Y'
-,p_translate_to_text=>'Publish Translations Plug-In Demo'
-,p_translate_from_text=>'Publish Translations Plug-In Demo'
+,p_translate_to_text=>'Seed & Publish Translations Plug-In Demo'
+,p_translate_from_text=>'Seed & Publish Translations Plug-In Demo'
 );
 wwv_flow_api.create_translation(
  p_id=>wwv_flow_api.id(272757192932482603)
@@ -10223,7 +10223,7 @@ wwv_flow_api.create_translation(
 ,p_translation_specific_to_item=>'NO'
 ,p_template_translatable=>'N'
 ,p_translate_to_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
-unistr('<p>Dieses Plug-In h\00E4lt die \00FCbersetzten Anwendungen automatisch auf dem neuesten Stand, indem es die laufende Anwendung mit einem asynchronen Hintergrundjob Seeding und ver\00F6ffentlicht.</p>'),
+unistr('<p>Dieses Plug-In h\00E4lt die \00FCbersetzten Anwendungen automatisch auf dem neuesten Stand, indem es die laufende Anwendung mit einem asynchronen Hintergrundjob ver\00F6ffentlicht.</p>'),
 unistr('<strong>Das Plug-In l\00F6st die folgenden Probleme:</strong>'),
 '<ol>',
 unistr('<li>Wenn Sie mehrsprachige APEX-Anwendungen entwickeln, m\00FCssen Sie die Vorg\00E4nge "Seed" und "Publish" so oft wiederholen, wie Sie \00C4nderungen vornehmen. Beispiel: Wenn die Hauptsprache Ihrer Anwendung Englisch ist und Sie die deutsche Version Ihrer App')
@@ -10493,8 +10493,8 @@ wwv_flow_api.create_translation(
 ,p_translate_to_lang_code=>'de'
 ,p_translation_specific_to_item=>'NO'
 ,p_template_translatable=>'N'
-,p_translate_to_text=>'Publish Translations Plug-In Demo'
-,p_translate_from_text=>'Publish Translations Plug-In Demo'
+,p_translate_to_text=>'Seed & Publish Translations Plug-In Demo'
+,p_translate_from_text=>'Seed & Publish Translations Plug-In Demo'
 );
 wwv_flow_api.create_translation(
  p_id=>wwv_flow_api.id(272759593584482756)
@@ -11087,92 +11087,96 @@ wwv_flow_api.create_plugin(
 ,p_image_prefix => nvl(wwv_flow_application_install.get_static_plugin_file_prefix('PROCESS TYPE','COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS'),'')
 ,p_plsql_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'FUNCTION Publish_Translations (',
-'	p_Application_ID NUMBER,',
-'	p_Exec_Asynchronous VARCHAR2 DEFAULT ''Y'',',
-'	p_Seed_Translations VARCHAR2 DEFAULT ''Y''',
+'    p_Application_ID NUMBER,',
+'    p_Exec_Asynchronous VARCHAR2 DEFAULT ''Y'',',
+'    p_Seed_Translations VARCHAR2 DEFAULT ''Y''',
 ')',
 'RETURN BOOLEAN',
 'IS',
-'	v_Owner APEX_APPLICATIONS.OWNER%TYPE;',
-'	v_Pref_Name VARCHAR2(64) := ''PUBLISH_TRANSLATIONS''||p_Application_ID;',
-'	v_Last_Updated VARCHAR2(64);',
-'	v_sql USER_SCHEDULER_JOBS.JOB_ACTION%TYPE;',
+'	job_exist EXCEPTION;',
+'	PRAGMA EXCEPTION_INIT (job_exist, -27477); -- ORA-27477: job already exists',
+'    v_Owner APEX_APPLICATIONS.OWNER%TYPE;',
+'    v_Pref_Name VARCHAR2(64) := ''PUBLISH_TRANSLATIONS''||p_Application_ID;',
+'    v_Last_Updated VARCHAR2(64);',
+'    v_sql USER_SCHEDULER_JOBS.JOB_ACTION%TYPE;',
 'BEGIN ',
-'	select OWNER, TO_CHAR(LAST_UPDATED_ON, ''YYYY/MM/DD HH24:MI:SS'')',
-'	into v_Owner, v_Last_Updated',
-'	from APEX_APPLICATIONS',
-'	where APPLICATION_ID = p_Application_ID;',
-'	if v_Last_Updated = apex_util.get_preference(v_Pref_Name, v_Owner) then ',
-'		return true;',
-'	end if;',
-'	apex_util.set_preference(',
-'		p_preference => v_Pref_Name, ',
-'		p_value => v_Last_Updated,',
-'		p_user => v_Owner',
-'	);',
-'	v_sql := apex_string.format(p_message => ',
-'		''begin ',
-'		!	apex_session.attach (%s, %s, %s);',
-'		!	for cur in (',
-'		!		select PRIMARY_APPLICATION_ID app_id, TRANSLATED_APP_LANGUAGE lang',
-'		!		from APEX_APPLICATION_TRANS_MAP',
-'		!		where PRIMARY_APPLICATION_ID = %s',
-'		!	) loop',
-'		!       %s',
-'		!		apex_lang.publish_application(cur.app_id, cur.lang);',
-'		!	end loop;',
-'		!	apex_session.detach;',
-'		!end;'', ',
-'		p0 => p_Application_ID, ',
-'		p1 => V(''APP_PAGE_ID''),',
-'		p2 => V(''APP_SESSION''),',
-'		p3 => p_Application_ID, ',
-'		p4 => case when p_seed_translations = ''Y'' then ',
-'			''apex_lang.seed_translations(cur.app_id, cur.lang);''',
-'		end,',
-'		p_prefix => ''!''',
-'	);',
-'	if apex_application.g_debug then',
-'		apex_debug.message(''exec_async: %s'', p_exec_asynchronous);',
-'		apex_debug.message(''job_action: %s'', v_sql);',
-'	end if;',
-'	if p_exec_asynchronous = ''Y'' then ',
-'		dbms_scheduler.create_job(',
-'			job_name => v_Pref_Name,',
-'			start_date => SYSDATE,',
-'			job_type => ''PLSQL_BLOCK'',',
-'			job_action => v_sql,',
-'			enabled => true ',
-'		);',
-'	else ',
-'		EXECUTE IMMEDIATE v_sql;',
-'	end if;',
-'	return false;',
+'    select OWNER, TO_CHAR(LAST_UPDATED_ON, ''YYYY/MM/DD HH24:MI:SS'')',
+'    into v_Owner, v_Last_Updated',
+'    from APEX_APPLICATIONS',
+'    where APPLICATION_ID = p_Application_ID;',
+'    if v_Last_Updated = apex_util.get_preference(v_Pref_Name, v_Owner) then ',
+'        return true;',
+'    end if;',
+'    apex_util.set_preference(',
+'        p_preference => v_Pref_Name, ',
+'        p_value => v_Last_Updated,',
+'        p_user => v_Owner',
+'    );',
+'    commit;',
+'    v_sql := apex_string.format(p_message => ',
+'        ''begin ',
+'        !   apex_session.attach (%s, %s, %s);',
+'        !   for cur in (',
+'        !       select PRIMARY_APPLICATION_ID app_id, TRANSLATED_APP_LANGUAGE lang',
+'        !       from APEX_APPLICATION_TRANS_MAP',
+'        !       where PRIMARY_APPLICATION_ID = %s',
+'        !   ) loop',
+'        !      %s apex_lang.seed_translations(cur.app_id, cur.lang);',
+'        !       apex_lang.publish_application(cur.app_id, cur.lang);',
+'        !   end loop;',
+'        !   apex_session.detach;',
+'        !end;'', ',
+'        p0 => p_Application_ID, ',
+'        p1 => V(''APP_PAGE_ID''),',
+'        p2 => V(''APP_SESSION''),',
+'        p3 => p_Application_ID, ',
+'        p4 => case when p_seed_translations = ''N'' then ''-- '' end,',
+'        p_prefix => ''!''',
+'    );',
+'    if apex_application.g_debug then',
+'        apex_debug.message(''exec_asynchronous: %s'', p_exec_asynchronous);',
+'        apex_debug.message(''seed_translations: %s'', p_seed_translations);',
+'        apex_debug.message(''job_action: %s'', v_sql);',
+'    end if;',
+'    if p_exec_asynchronous = ''Y'' then ',
+'        dbms_scheduler.create_job(',
+'            job_name => v_Pref_Name,',
+'            start_date => SYSDATE,',
+'            job_type => ''PLSQL_BLOCK'',',
+'            job_action => v_sql,',
+'            enabled => true ',
+'        );',
+'    else ',
+'        EXECUTE IMMEDIATE v_sql;',
+'    end if;',
+'    return false;',
+'EXCEPTION WHEN job_exist THEN',
+'	return true;',
 'END Publish_Translations;',
 '',
 'FUNCTION plugin_publish_translations (',
-'	p_process in apex_plugin.t_process,',
-'	p_plugin  in apex_plugin.t_plugin )',
+'    p_process in apex_plugin.t_process,',
+'    p_plugin  in apex_plugin.t_plugin )',
 'RETURN apex_plugin.t_process_exec_result',
 'IS',
-'	v_exec_result apex_plugin.t_process_exec_result;',
-'	v_exec_asynchronous VARCHAR2(30);',
-'	v_seed_translations VARCHAR2(30);',
+'    v_exec_result apex_plugin.t_process_exec_result;',
+'    v_exec_asynchronous VARCHAR2(30);',
+'    v_seed_translations VARCHAR2(30);',
 'BEGIN',
-'	if apex_application.g_debug then',
-'		apex_plugin_util.debug_process (',
-'			p_plugin => p_plugin,',
-'			p_process => p_process',
-'		);',
-'	end if;',
-'	v_exec_asynchronous := p_process.attribute_01;',
-'	v_seed_translations  := p_process.attribute_02;',
-'	v_exec_result.execution_skipped := Publish_Translations(',
-'		p_Application_ID => apex_application.g_flow_id, ',
-'		p_Exec_Asynchronous => v_exec_asynchronous,',
-'		p_Seed_Translations => v_seed_translations',
-'	);',
-'	RETURN v_exec_result;',
+'    if apex_application.g_debug then',
+'        apex_plugin_util.debug_process (',
+'            p_plugin => p_plugin,',
+'            p_process => p_process',
+'        );',
+'    end if;',
+'    v_exec_asynchronous := p_process.attribute_01;',
+'    v_seed_translations  := p_process.attribute_02;',
+'    v_exec_result.execution_skipped := Publish_Translations(',
+'        p_Application_ID => apex_application.g_flow_id, ',
+'        p_Exec_Asynchronous => v_exec_asynchronous,',
+'        p_Seed_Translations => v_seed_translations',
+'    );',
+'    RETURN v_exec_result;',
 'END plugin_publish_translations;',
 ''))
 ,p_api_version=>2
@@ -11270,11 +11274,12 @@ wwv_flow_api.create_page(
 ,p_user_interface_id=>wwv_flow_api.id(272736197302233885)
 ,p_name=>'Home'
 ,p_alias=>'HOME'
-,p_step_title=>'Publish Translations Plug-In Demo'
+,p_step_title=>'Seed & Publish Translations Plug-In Demo'
 ,p_autocomplete_on_off=>'OFF'
+,p_step_template=>wwv_flow_api.id(272613985055233807)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'DIRK'
-,p_last_upd_yyyymmddhh24miss=>'20220111013034'
+,p_last_upd_yyyymmddhh24miss=>'20220111021854'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(272204048503357415)
@@ -11329,7 +11334,7 @@ wwv_flow_api.create_report_region(
 'ORDER BY LOG_DATE DESC;'))
 ,p_ajax_enabled=>'Y'
 ,p_query_row_template=>wwv_flow_api.id(272680664212233840)
-,p_query_num_rows=>15
+,p_query_num_rows=>10
 ,p_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_query_show_nulls_as=>'-'
 ,p_query_num_rows_type=>'NEXT_PREVIOUS_LINKS'
@@ -11395,14 +11400,14 @@ wwv_flow_api.create_page_plug(
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(272747083725233928)
-,p_plug_name=>'Publish Translations Plug-In Demo'
+,p_plug_name=>'Seed & Publish Translations Plug-In Demo'
 ,p_icon_css_classes=>'app-icon'
 ,p_region_template_options=>'#DEFAULT#'
-,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(272640729296233821)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'REGION_POSITION_01'
 ,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
@@ -11427,7 +11432,7 @@ wwv_flow_api.create_page(
 ,p_user_interface_id=>wwv_flow_api.id(272736197302233885)
 ,p_name=>'Login Page'
 ,p_alias=>'LOGIN_DESKTOP'
-,p_step_title=>'Publish Translations Plug-In Demo - Sign In'
+,p_step_title=>'Seed & Publish Translations Plug-In Demo - Sign In'
 ,p_warn_on_unsaved_changes=>'N'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
@@ -11435,7 +11440,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_page_is_public_y_n=>'Y'
 ,p_last_updated_by=>'DIRK'
-,p_last_upd_yyyymmddhh24miss=>'20220111000329'
+,p_last_upd_yyyymmddhh24miss=>'20220111021755'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(272740294797233913)
