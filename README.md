@@ -34,7 +34,7 @@ This example implements a process that is runs when you load the home page after
   - Success Message: Started publishing of translations. 
 
 
-![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Publish-Translations-Process.png)
+![Publish-Translations-Process](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/media/Publish-Translations-Process.png)
 
 You can check the process execution with the following queries:
 - SELECT * FROM USER_SCHEDULER_RUNNING_JOBS WHERE JOB_NAME LIKE 'PUBLISH_TRANSLATIONS%';
@@ -42,4 +42,4 @@ You can check the process execution with the following queries:
 
 After execution of the process the translated apps are up-to-date.
 On the page Shared Components \ Translate - in the List of Translations the column Requires-Synchronization will display _No_ in every row.
-![Translations-Requires-Synchronization](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/Translations-Requires-Synchronization.png)
+![Translations-Requires-Synchronization](https://github.com/dstrack/strack-software-publish-translations-plugin/blob/main/media/Translations-Requires-Synchronization.png)
