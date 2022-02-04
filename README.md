@@ -1,5 +1,5 @@
 # Seed & Publish Translations Plug-In
-This Plug-In keeps the translated applications up-to-date automatically by seeding and publishing the running application with an asynchronous background job.
+This Plug-In keeps translated applications up-to-date automatically by seeding and publishing the running application with an asynchronous background job.
 
 A required task for APEX developers is: When any modification is made to your primary application, perform the "Seed" and "Publish" operations to recreate an updated version of your translated application(s). This can be quite annoying when you have to repeat this task dozens of times.
 
