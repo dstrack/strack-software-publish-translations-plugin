@@ -21,7 +21,7 @@ d {
   "oracle": {
     "versions": ["12.2.0.1", "20.1"],
     "apex": {
-      "versions": ["5.1.0", "22.1"],
+      "versions": ["19.2.0", "22.1"],
       "plugin": {
         "internalName": "COM.STRACK_SOFTWARE.PUBLISH_TRANSLATIONS",
         "type": "process",
